@@ -1,5 +1,5 @@
 # Taipei-QA-BertForSequenceClassification
-使用BertForSequenceClassification訓練台北市政府局處問答資料集
+使用BertForSequenceClassification訓練政府部門問答資料集
 
 大部分程式架構的參考來源 : [p208p2002/taipei-QA-BERT](https://github.com/p208p2002/taipei-QA-BERT)
 
