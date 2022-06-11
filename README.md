@@ -6,6 +6,7 @@
 貢獻 : 
 - 修改了[p208p2002/taipei-QA-BERT/preprocess_data.py](https://github.com/p208p2002/taipei-QA-BERT/blob/master/preprocess_data.py)中關於input_masks的錯誤。
 - 新增了其他政府部門的QA資料集，以及相關的crawlers
+- 使用了ALBERT來進行Fine-tune
 
 ## 檔案說明
 ### Data
