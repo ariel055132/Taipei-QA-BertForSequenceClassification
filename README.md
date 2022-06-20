@@ -1,9 +1,12 @@
-# Taipei-QA-BertForSequenceClassification
+# TaipeiGOVDepartment-QA-BertForSequenceClassification
 使用BertForSequenceClassification訓練政府部門問答資料集
 
 大部分程式架構的參考來源 : [p208p2002/taipei-QA-BERT](https://github.com/p208p2002/taipei-QA-BERT)
 
-貢獻 : 修改了[p208p2002/taipei-QA-BERT/preprocess_data.py](https://github.com/p208p2002/taipei-QA-BERT/blob/master/preprocess_data.py)中關於input_masks的錯誤。
+貢獻 : 
+- 修改了[p208p2002/taipei-QA-BERT/preprocess_data.py](https://github.com/p208p2002/taipei-QA-BERT/blob/master/preprocess_data.py)中關於input_masks的錯誤。
+- 新增了其他政府部門的QA資料集，以及相關的crawlers
+- 使用了ALBERT來進行Fine-tune
 
 ## 檔案說明
 ### Data
@@ -28,3 +31,6 @@ python predict.py
 - pytorch 1.3+
 - transformers 2.2+
 - CUDA Version: 10.0
+- BeautifulSoup
+- Selenium
+- (Optional) Colab / Colab pro
