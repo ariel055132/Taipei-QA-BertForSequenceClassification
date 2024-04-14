@@ -23,7 +23,7 @@ if __name__ == "__main__":
     bert_config, bert_class, bert_tokenizer = (BertConfig, BertForSequenceClassification, BertTokenizer)
 
     # 设置使用的GPU用法來源:https://www.cnblogs.com/darkknightzh/p/6591923.html
-    os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+    os.environ["CUDA_VISIBLE_DEVICES"] = "0"
     # set device，gpu用法來源:https://zhuanlan.zhihu.com/p/76604
     device = torch.device("cuda")
 

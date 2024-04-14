@@ -18,7 +18,8 @@ if __name__ == "__main__":
     
     bert_config, bert_class, bert_tokenizer = (BertConfig, BertForSequenceClassification, BertTokenizer)
     config = bert_config.from_pretrained('trained_model/config.json')
-    model = bert_class.from_pretrained('trained_model/pytorch_model.bin', from_tf=bool('.ckpt' in 'bert-base-chinese'), config=config)
+    #model = bert_class.from_pretrained('trained_model/pytorch_model.bin', from_tf=bool('.ckpt' in 'bert-base-chinese'), config=config)
+    model = bert_class.from_pretrained('trained_model/model.safetensors', from_tf=bool('.ckpt' in 'bert-base-chinese'), config=config)
     model.eval()
 
     with open('valid_data.txt','r',encoding='utf-8') as f:

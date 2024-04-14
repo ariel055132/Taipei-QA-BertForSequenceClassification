@@ -34,3 +34,22 @@ python predict.py
 - BeautifulSoup
 - Selenium
 - (Optional) Colab / Colab pro
+
+## 20240414 New Update
+* 使用了新的電腦及環境進行訓練
+* python 3.10+
+* pytorch 2.2.2
+* transformers 4.39.3
+* CUDA Version: 12.1
+* Difference: Training 的時候並不會儲存成pytorch.bin，存成model.safetensors，須在predict.py修改model的來源，如下所示
+```
+Before:
+model = bert_class.from_pretrained('trained_model/pytorch_model.bin', from_tf=bool('.ckpt' in 'bert-base-chinese'), config=config)
+After:
+model = bert_class.from_pretrained('trained_model/model.safetensors', from_tf=bool('.ckpt' in 'bert-base-chinese'), config=config)
+```
+* 若遇到 RuntimeError: No CUDA GPUs are available，可使用nvidia-smi -L 來檢查GPU的編號，並修改train.py的GPU來源
+```
+# 设置使用的GPU用法來源:https://www.cnblogs.com/darkknightzh/p/6591923.html
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+```
