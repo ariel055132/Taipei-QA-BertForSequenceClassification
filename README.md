@@ -41,6 +41,7 @@ python predict.py
 * pytorch 2.2.2
 * transformers 4.39.3
 * CUDA Version: 12.1
+* 安裝 **Scikit learn** 進行 Precision, Recall, F1-score 的計算
 * Difference: Training 的時候並不會儲存成pytorch.bin，存成model.safetensors，須在predict.py修改model的來源，如下所示
 ```
 Before:

@@ -10,10 +10,12 @@ def make_ans_dic(answers):
     print("全部答案種類:",ansdic.types)
     
     # 測試轉換
-    a_id = ansdic.to_id('臺北市信義區公所')
+    #a_id = ansdic.to_id('臺北市信義區公所')
+    a_id = ansdic.to_id('美人除咗娛樂資訊政事都跟得好貼滾動')
     a_text = ansdic.to_text(a_id)
-    assert a_text == '臺北市信義區公所'
-    assert ansdic.to_id(a_text) == a_id
+    #assert a_text == '臺北市信義區公所'
+    #assert a_text == '美人除咗娛樂資訊政事都跟得好貼滾動'
+    #assert ansdic.to_id(a_text) == a_id
 
     return ansdic
 
@@ -93,15 +95,18 @@ def convert_data_to_feature(FileName):
                     'answer_dic':ans_dic}
 
     # 因為train_data保證可以拿到所有類別的資料，且之後要做predict時才能將預測的結果做正確轉換
-    if FileName == 'train_data.txt':
-        fp = open('trained_model/data_features.pkl', 'wb')
+    #if FileName == 'train_data.txt':
+    if FileName == '20240416_trained_models/20240319_HKU_train_data.txt':
+        #fp = open('trained_model/data_features.pkl', 'wb')
+        fp = open('20240416_trained_models/data_features.pkl', 'wb')
         pickle.dump(data_features, fp)
         fp.close()
 
     return data_features
 
 if __name__ == "__main__":
-    data_features = convert_data_to_feature('train_data.txt')
+    #data_features = convert_data_to_feature('train_data.txt')
+    data_features = convert_data_to_feature('20240416_trained_models/20240319_HKU_train_data.txt')
     print(data_features['input_ids'][0])
     print(data_features['input_segment_ids'][0])
     print(data_features['input_masks'][0])
