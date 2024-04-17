@@ -13,7 +13,7 @@
 - data_split.py : 將Taipei_QA_new.txt切割成train、test和valid資料的程式
 - core.py : 處理dataset和label的轉換
 - preprocess_data.py : BertForSequenceClassification的前處理
-- train.py : BertForSequenceClassification的訓練
+- train.py / train_v2.py : BertForSequenceClassification的訓練
 - predict.py : BertForSequenceClassification的預測
 - requestment.txt : 紀錄需要安裝的環境
 ## 使用說明
@@ -21,10 +21,16 @@
 ```
 python data_split.py    # 如果已經存在train、test和valid資料，就可以跳過這步驟
 python train.py         # 如果想用訓練好的model可以去release下載，並將資料放入trained_model內，就可以跳過這步驟
+python train_v2.py      # 在訓練的途中增加Precision, Recall, F1-score的計算 (new update)
 ```
 ### Demo
 ```
 python predict.py
+```
+### 檢查GPU
+``` 
+nvidia-smi -L  # 檢查GPU編號，型號等詳細資料
+checkGPU.py    # 檢查是否有安裝GPU
 ```
 ## 環境需求
 - python 3.6+
@@ -36,7 +42,7 @@ python predict.py
 - (Optional) Colab / Colab pro
 
 ## 20240414 New Update
-* 使用了新的電腦及環境進行訓練
+* 使用了新的電腦(ASUS TUG Gaming A15, Ryzen 5 7535, RTX 4060)及環境進行訓練
 * python 3.10+
 * pytorch 2.2.2
 * transformers 4.39.3
