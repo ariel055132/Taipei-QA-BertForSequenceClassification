@@ -25,7 +25,8 @@ python train_v2.py      # 在訓練的途中增加Precision, Recall, F1-score的
 ```
 ### Demo
 ```
-python predict.py
+python predict.py       # 原始版本的Prediction，只能展示Accuracy
+python predict_v2.py    # 更新後的Prediction，可顯示Accuracy, Precision, Recall, F1-Score
 ```
 ### 檢查GPU
 ``` 
