@@ -8,11 +8,11 @@ def save_data(FileName, data_list):
         fp.write('\n')
     fp.close()
 
-# 資料分割，因為有149個類別，所以為了公正，要確保切割時，train_data要有每個類別的資料
+# 資料分割，目前只有兩個類別
 def data_split():
     # 20220531_QA_v4.txt
     # 20220602_FinalDataset.txt
-    with open('20240420/20240420_authority_original_data.csv','r',encoding='utf-8') as f:
+    with open('20240420_original_data_preprocess/20240420_sancity_original_data.csv','r',encoding='utf-8') as f:
         data = f.read()
     qa_pairs = data.split("\n")
 
@@ -40,9 +40,9 @@ def data_split():
         except:
             continue
 
-    save_data("Binary/20240319_HKU_train_data.txt", train_data)
-    save_data("Binary/20240319_HKU_test_data.txt", test_data)
-    save_data("Binary/20240319_HKU_valid_data.txt", valid_data)
+    save_data("20240420_sancity_trained_models/20240420_sancity_train_data.txt", train_data)
+    save_data("20240420_sancity_trained_models/20240420_sancity_test_data.txt", test_data)
+    save_data("20240420_sancity_trained_models/20240420_sancity_valid_data.txt", valid_data)
 
 if __name__ == "__main__":
    data_split()
