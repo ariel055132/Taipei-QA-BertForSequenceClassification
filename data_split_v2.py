@@ -12,7 +12,7 @@ def save_data(FileName, data_list):
 def data_split():
     # 20220531_QA_v4.txt
     # 20220602_FinalDataset.txt
-    with open('Binary/20240319_BinaryPredAll.csv','r',encoding='utf-8') as f:
+    with open('20240420/20240420_authority_original_data.csv','r',encoding='utf-8') as f:
         data = f.read()
     qa_pairs = data.split("\n")
 
@@ -30,14 +30,6 @@ def data_split():
             if before != now:
                 count = 0
             count += 1
-            '''
-            if count % 5 == 3:
-                test_data.append(qa_pair)
-            elif count % 5 == 4:
-                valid_data.append(qa_pair)
-            else:
-                train_data.append(qa_pair)
-            '''
             if count % 10 == 0 or count % 10 == 2:
                 test_data.append(qa_pair)
             elif count % 10 == 4 or count % 10 == 6 or count % 10 == 8:
