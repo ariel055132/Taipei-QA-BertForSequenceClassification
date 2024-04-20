@@ -96,9 +96,11 @@ def convert_data_to_feature(FileName):
 
     # 因為train_data保證可以拿到所有類別的資料，且之後要做predict時才能將預測的結果做正確轉換
     #if FileName == 'train_data.txt':
-    if FileName == '20240416_trained_models/20240319_HKU_train_data.txt':
+    morality_type = "harm"
+    fileName = f"20240420_{morality_type}_trained_models/20240420_{morality_type}_train_data.txt"
+    if FileName == f'20240420_{morality_type}_trained_models/20240420_{morality_type}_train_data.txt':
         #fp = open('trained_model/data_features.pkl', 'wb')
-        fp = open('20240416_trained_models/data_features.pkl', 'wb')
+        fp = open(f'20240420_{morality_type}_trained_models/data_features.pkl', 'wb')
         pickle.dump(data_features, fp)
         fp.close()
 
@@ -106,7 +108,7 @@ def convert_data_to_feature(FileName):
 
 if __name__ == "__main__":
     #data_features = convert_data_to_feature('train_data.txt')
-    data_features = convert_data_to_feature('20240416_trained_models/20240319_HKU_train_data.txt')
+    data_features = convert_data_to_feature(f'20240420_{morality_type}_trained_models/20240420_{morality_type}_train_data.txt')
     print(data_features['input_ids'][0])
     print(data_features['input_segment_ids'][0])
     print(data_features['input_masks'][0])

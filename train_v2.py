@@ -49,8 +49,14 @@ if __name__ == "__main__":
     # set device，gpu用法來源:https://zhuanlan.zhihu.com/p/76604
     device = torch.device("cuda")
 
-    train_data_feature = convert_data_to_feature('20240416_trained_models/20240319_HKU_train_data.txt')
-    test_data_feature = convert_data_to_feature('20240416_trained_models/20240319_HKU_valid_data.txt')
+    morality_type = 'harm'
+    train_data_location = f'20240420_{morality_type}_trained_models/20240420_{morality_type}_train_data.txt'
+    test_data_location = f'20240420_{morality_type}_trained_models/20240420_{morality_type}_valid_data.txt'
+    print(train_data_location)
+    print(test_data_location)
+
+    train_data_feature = convert_data_to_feature(train_data_location)
+    test_data_feature = convert_data_to_feature(test_data_location)
     train_dataset = makeDataset(train_data_feature)
     test_dataset = makeDataset(test_data_feature)
 
@@ -180,5 +186,5 @@ if __name__ == "__main__":
         print('第' + str(epoch+1) + '次' + '訓練模式，f1-score為:' + str(Average_train_f1) + '，測試模式，f1-score為:' + str(Average_test_f1))
 
     model_to_save = model.module if hasattr(model, 'module') else model  # Take care of distributed/parallel training
-    model_to_save.save_pretrained('20240416_trained_models')
+    model_to_save.save_pretrained(f'20240420_{morality_type}_trained_models')
     #model_to_save.save_pretrained('albert_model')

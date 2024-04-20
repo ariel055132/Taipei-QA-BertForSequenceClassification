@@ -9,16 +9,17 @@ def toBertIds(question_input):
 if __name__ == "__main__":
     # Load and initialize
     tokenizer = BertTokenizer(vocab_file='bert-base-chinese-vocab.txt')
-    with open('20240416_trained_models/data_features.pkl', 'rb') as pkl_file:
+    morality_type = "harm"
+    with open(f'20240420_{morality_type}_trained_models/data_features.pkl', 'rb') as pkl_file:
         data_features = pickle.load(pkl_file)
     answer_dic = data_features['answer_dic']
     #print(dir(answer_dic))
 
-    config = BertConfig.from_pretrained('20240416_trained_models/config.json')
-    model = BertForSequenceClassification.from_pretrained('20240416_trained_models/model.safetensors', config=config)
+    config = BertConfig.from_pretrained(f'20240420_{morality_type}_trained_models/config.json')
+    model = BertForSequenceClassification.from_pretrained(f'20240420_{morality_type}_trained_models/model.safetensors', config=config)
     model.eval()
 
-    with open('20240416_trained_models/20240319_HKU_valid_data.txt', 'r', encoding='utf-8') as f:
+    with open(f'20240420_{morality_type}_trained_models/20240420_{morality_type}_test_data.txt', 'r', encoding='utf-8') as f:
         data = f.read()
     qa_pairs = data.split("\n")
     questions = []

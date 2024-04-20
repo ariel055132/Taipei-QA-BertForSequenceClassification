@@ -12,7 +12,8 @@ def save_data(FileName, data_list):
 def data_split():
     # 20220531_QA_v4.txt
     # 20220602_FinalDataset.txt
-    with open('20240420_original_data_preprocess/20240420_sancity_original_data.csv','r',encoding='utf-8') as f:
+    morality_type = "fairness"
+    with open(f'20240420_original_data_preprocess/20240420_{morality_type}_original_data.csv','r',encoding='utf-8') as f:
         data = f.read()
     qa_pairs = data.split("\n")
 
@@ -30,9 +31,9 @@ def data_split():
             if before != now:
                 count = 0
             count += 1
-            if count % 10 == 0 or count % 10 == 2:
+            if count % 10 == 1 or count % 10 == 3:
                 test_data.append(qa_pair)
-            elif count % 10 == 4 or count % 10 == 6 or count % 10 == 8:
+            elif count % 10 == 5 or count % 10 == 7 or count % 10 == 9:
                 valid_data.append(qa_pair)
             else:
                 train_data.append(qa_pair)
@@ -40,9 +41,9 @@ def data_split():
         except:
             continue
 
-    save_data("20240420_sancity_trained_models/20240420_sancity_train_data.txt", train_data)
-    save_data("20240420_sancity_trained_models/20240420_sancity_test_data.txt", test_data)
-    save_data("20240420_sancity_trained_models/20240420_sancity_valid_data.txt", valid_data)
+    save_data(f"20240420_{morality_type}_trained_models/20240420_{morality_type}_train_data.txt", train_data)
+    save_data(f"20240420_{morality_type}_trained_models/20240420_{morality_type}_test_data.txt", test_data)
+    save_data(f"20240420_{morality_type}_trained_models/20240420_{morality_type}_valid_data.txt", valid_data)
 
 if __name__ == "__main__":
    data_split()
